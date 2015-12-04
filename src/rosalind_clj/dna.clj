@@ -6,5 +6,8 @@
               (assoc base-count-map (keyword (str key)) (count val)))
             {} grouped-bases)))
 
-(defn print-base-counts [base-counts]
+(defn base-counts->str [base-counts]
   (str (:A base-counts) " " (:C base-counts) " " (:G base-counts) " " (:T base-counts)))
+
+(defn base-count-str [dna-seq]
+  (-> dna-seq count-bases base-counts->str))
