@@ -1,9 +1,9 @@
-(ns rosalind-clj.rna)
+(ns rosalind-clj.rna
+  (:require [rosalind-clj.core :as core]))
 
 (defn transcribe-base [base]
-  (let [valid-bases #{\A \C \G \T}]
-    (when (not (contains? valid-bases base))
-      (throw (IllegalArgumentException. "Invalid base."))))
+  (when (core/invalid-dna-base base)
+    (throw (IllegalArgumentException. "Invalid base.")))
   (if (= base \T)
     \U
     base))
