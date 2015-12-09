@@ -1,4 +1,4 @@
-(ns rosalind-clj.revc_test
+(ns rosalind-clj.revc-test
   (:require [clojure.test :refer :all]
             [rosalind-clj.revc :refer :all]))
 
