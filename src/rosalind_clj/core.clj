@@ -24,7 +24,10 @@
               (assoc new-map (first entry) (reduce str (rest entry))))
             {} cleaned-entries)))
 
+(defn round-to-millionths [number]
+  (/ (Math/round (* 1000000 number)) 1000000.0))
+
 (defn within-abs-error? [result expected]
   (let [abs-error 0.001
-        difference (Math/abs (- expected result))]
+        difference (Math/floor (- expected result))]
     (< difference abs-error)))

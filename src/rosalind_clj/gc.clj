@@ -8,4 +8,8 @@
   (reduce + (map #(if (g-or-c? %) 1 0) dna-seq)))
 
 (defn gc-content [dna-seq]
-  (* 100 (double (/ (gc-count dna-seq) (count dna-seq)))))
+  (c/round-to-millionths (* 100 (double (/ (gc-count dna-seq) (count dna-seq))))))
+
+(defn max-gc-content [fasta-data]
+  (let [highest-gc (apply max-key gc-content fasta-data)]
+    [(first highest-gc) (gc-content (second highest-gc))]))
