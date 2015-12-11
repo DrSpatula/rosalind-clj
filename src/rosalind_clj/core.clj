@@ -15,7 +15,6 @@
 
 (def invalid-rna-base (complement valid-rna-base))
 
-
 (defn import-fasta [filename]
   (let [file (io/resource filename)
         raw-txt (slurp file)
@@ -24,3 +23,8 @@
     (reduce (fn [new-map entry]
               (assoc new-map (first entry) (reduce str (rest entry))))
             {} cleaned-entries)))
+
+(defn within-abs-error? [result expected]
+  (let [abs-error 0.001
+        difference (Math/abs (- expected result))]
+    (< difference abs-error)))

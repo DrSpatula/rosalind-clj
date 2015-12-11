@@ -39,3 +39,10 @@
     (let [test-filename "fasta_test_file.txt"
           correct-data {"Label 1"  "Data line 1 Data line 2"  "Label 2"  "Data line 3 Data line 4"}]
       (is (= correct-data (import-fasta test-filename))))))
+
+
+(deftest test-within-abs-error?
+  (testing "Difference higher than absolute error returns false"
+    (is (not (within-abs-error? 10 20))))
+  (testing "Difference lower than absolute error returns true"
+    (is (within-abs-error? 10 10.0009))))
