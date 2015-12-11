@@ -32,3 +32,10 @@
     (is (every? invalid-rna-base invalid-rna-bases)))
   (testing "Valid bases return false"
     (is (nil? (some invalid-rna-base valid-rna-bases)))))
+
+
+(deftest test-import-fasta
+  (testing "Test FASTA data file returns correct data"
+    (let [test-filename "fasta_test_file.txt"
+          correct-data {"Label 1"  "Data line 1 Data line 2"  "Label 2"  "Data line 3 Data line 4"}]
+      (is (= correct-data (import-fasta test-filename))))))

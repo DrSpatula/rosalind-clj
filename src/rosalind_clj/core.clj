@@ -23,4 +23,4 @@
         cleaned-entries (map #(str/split % #"\n") raw-entries)]
     (reduce (fn [new-map entry]
               (assoc new-map (first entry) (reduce str (rest entry))))
-              {} cleaned-entries)))
+            {} cleaned-entries)))
