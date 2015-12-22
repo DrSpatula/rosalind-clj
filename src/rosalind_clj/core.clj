@@ -43,7 +43,7 @@
    :CGU \R    :CGC \R    :CGA \R    :CGG \R
    :AUU \I    :AUC \I    :AUA \I    :AUG \M
    :ACU \T    :ACC \T    :ACA \T    :ACG \T
-   :AAU \N    :AAC \N    :AAA \N    :AAG \N
+   :AAU \N    :AAC \N    :AAA \K    :AAG \K
    :AGU \S    :AGC \S    :AGA \R    :AGG \R
    :GUU \V    :GUC \V    :GUA \V    :GUG \V
    :GCU \A    :GCC \A    :GCA \A    :GCG \A
