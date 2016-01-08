@@ -1,16 +1,19 @@
 (ns rosalind-clj.fibd)
 
 
-(defn age-pair [lifespan pair]
-  (cond
-    (= pair 1) 2
-    (= pair lifespan) 1
-    :else [(inc pair) 1]))
-
-
-(defn next-generation [lifespan generation]
-  (flatten (map #((partial age-pair lifespan) %) generation)))
+(def newborns
+  (memoize 
+    (fn [lifespan month]
+      (cond
+        (= month 1) 1
+        (or (< month 1) (= month 2)) 0
+        :else (let [start-range (- month lifespan)
+                    end-range (dec month)
+                    months (filter #(> % 0) (range start-range end-range))]
+                (apply +' (map #((partial newborns lifespan) %) months)))))))
 
 
 (defn mortal-rabbits [month lifespan]
-  (count (nth (iterate #((partial next-generation lifespan) %) [1]) (dec month))))
+  (let [start-range (- month (dec lifespan))
+        end-range (inc month)]
+    (apply +' (map #((partial newborns lifespan) %) (range start-range end-range)))))
