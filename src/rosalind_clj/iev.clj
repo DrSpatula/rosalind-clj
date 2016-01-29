@@ -7,4 +7,6 @@
 
 
 (defn expected-offspring [offspring population]
-  (reduce + (map #(* offspring (* %1 %2)) population (vals probabilities))))
+  (if (not= 6 (count population))
+    (throw (IllegalArgumentException. "Population argument must contain 6 values"))
+    (reduce + (map #(* offspring (* %1 %2)) population (vals probabilities)))))
